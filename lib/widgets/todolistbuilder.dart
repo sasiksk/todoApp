@@ -23,7 +23,8 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
   ToDoList? _dismissedItem;
   int? _remindex;
   bool _deleteScheduled = false;
-  bool _undoPressed = false; // Flag to track if undo action is pressed
+  bool _undoPressed = false;
+  // Flag to track if undo action is pressed
 
   void _deleteItemFromDB(int id) async {
     try {
@@ -61,7 +62,7 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
                   ScaffoldMessenger.of(context).clearSnackBars();
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      duration: const Duration(seconds: 5),
+                      duration: const Duration(seconds: 2),
                       closeIconColor: Colors.blue[50],
                       showCloseIcon: true,
                       action: SnackBarAction(
@@ -82,7 +83,7 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
                 });
 
                 _deleteScheduled = true;
-                Future.delayed(const Duration(seconds: 5), () {
+                Future.delayed(const Duration(seconds: 2), () {
                   if (_deleteScheduled && !_undoPressed) {
                     // Delete only if not undone
                     _deleteItemFromDB(id);
